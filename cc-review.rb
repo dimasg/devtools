@@ -6,7 +6,7 @@ require 'time'
 require 'digest/md5'
 
 CC_URI = URI.parse(`cat ~/.smartbear/com.smartbear.ccollab.client.txt | grep url=`.split('=')[1].chomp.gsub('\\',''))
-SUPPORTED_SERVER_VERISON = 823
+SUPPORTED_SERVER_VERISON = 810
 SVN_LOGIN = `cat ~/.subversion/auth/svn.simple/* | head -16 | tail -1`.chomp
 SVN_PASSWORD = `cat ~/.subversion/auth/svn.simple/* | head -8 | tail -1`.chomp
 CLIENT_GUID = `cat ~/.smartbear/com.smartbear.ccollab.client.txt | grep clientguid=`.split('=')[1].chomp
@@ -28,7 +28,7 @@ def find_files
     end
   else
     ARGV.each { |file| files << { :action_type => 'M', :filename => file } }
-  end
+  end  
 
   raise "Files for review not found." if files.empty?
 
@@ -49,14 +49,14 @@ puts "CodeCollaborator git-svn client."
 
 begin
   if !ARGV.empty? && ARGV[0].to_i > 0
-    review_id = ARGV.shift.to_i
+    review_id = ARGV.shift.to_i 
   end
 
-  @commit_hash = `git svn dcommit -n | tail -1`.split[1]
+  @commit_hash = `git svn dcommit -n | head -2 | tail -1`.split[1]
   @files = find_files
-
+ 
   @server = XMLRPC::Client.new(CC_URI.host, "/xmlrpc/server", CC_URI.port)
-  @server.set_debug if 1 == ENV['CC_DEBUG']
+  @server.set_debug if '1' == ENV['CC_DEBUG']
 
   version = @server.call("ccollab3.getServerVersion")
   raise "Unknown server version #{version}" if SUPPORTED_SERVER_VERISON != version
@@ -84,7 +84,8 @@ begin
     prev_version_id = @server.call("ccollab3.versionCreate", file_changelist_id, SVN_PREFIX + file[:filename], '', commit_revision, 'A', 'C')
     content = `git show #{@commit_hash}:#{file[:filename]}`
     content_md5 = Digest::MD5.hexdigest(content)
-    @server.call("ccollab3.versionSetContentByMd5", prev_version_id, content_md5)
+    found = @server.call("ccollab3.versionSetContentByMd5", prev_version_id, content_md5)
+    @server.call("ccollab3.versionSetContent", prev_version_id, XMLRPC::Base64.new(content)) if !found
     @server.call("ccollab3.save", 'com.smartbear.ccollab.datamodel.VersionData', {
       'changelistId' => file_changelist_id, 'changeType' => 'A', 'prevVersionId' => 0, 'contentMd5' => content_md5,
       'id' => prev_version_id, 'scmVersionName' => commit_revision, 'localFilePath' => '', 'localType' => 'C',
