@@ -254,12 +254,12 @@ def update_cc_review(cc_server, review_id, commit_hash_id, files):
 
 def main(argv):
     review_id = 0
-    if len(argv) > 0 and int(argv[0]) > 0:
-        review_id = int(argv[0])
+    if len(argv) > 0 and argv[0].isdigit():
+        review_id = int(argv.pop(0))
 
     init_vars()
     commit_hash_id = get_commit_hash()
-    files = get_files(commit_hash_id, argv[1:])
+    files = get_files(commit_hash_id, argv)
 
     cc_server = get_cc_server()
     if review_id == 0:
