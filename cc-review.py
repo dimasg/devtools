@@ -178,8 +178,9 @@ def update_cc_review(cc_server, review_id, commit_hash_id, files):
             'fake comment', cc_guid
         )
         abs_file_name = os.path.abspath(file['name'])
+        svn_path_name = os.path.join(svn_prefix, file['name'])
         prev_version_id = cc_server.ccollab3.versionCreate(
-            file_changelist_id, svn_prefix + file['name'],
+            file_changelist_id, svn_path_name,
             abs_file_name, commit_revision, 'A'
         )
         content = os.popen(
@@ -199,7 +200,7 @@ def update_cc_review(cc_server, review_id, commit_hash_id, files):
             'com.smartbear.ccollab.datamodel.VersionData', {
                 'changelistId': file_changelist_id, 'contentMd5': content_md5,
                 'id': prev_version_id, 'scmVersionName': commit_revision,
-                'filePath': svn_prefix + file['name'],
+                'filePath': svn_path_name,
                 'changeType': 'A', 'localType': 'C',
                 'localFilePath': '', 'prevVersionId': 0,
             }
@@ -207,7 +208,7 @@ def update_cc_review(cc_server, review_id, commit_hash_id, files):
 
         commit_revision = str(get_svn_revision(file['name']))
         version_id = cc_server.ccollab3.versionCreate(
-            local_changelist_id, svn_prefix + file['name'],
+            local_changelist_id, svn_path_name,
             abs_file_name, commit_revision, 'M'
         )
 
@@ -215,7 +216,7 @@ def update_cc_review(cc_server, review_id, commit_hash_id, files):
             'com.smartbear.ccollab.datamodel.VersionData', {
                 'changelistId': local_changelist_id, 'contentMd5': '',
                 'id': version_id, 'scmVersionName': commit_revision,
-                'filePath': svn_prefix + file['name'],
+                'filePath': svn_path_name,
                 'changeType': 'M', 'localType': 'L',
                 'localFilePath': abs_file_name,
                 'prevVersionId': prev_version_id
@@ -236,7 +237,7 @@ def update_cc_review(cc_server, review_id, commit_hash_id, files):
             'com.smartbear.ccollab.datamodel.VersionData', {
                 'changelistId': local_changelist_id, 'contentMd5': content_md5,
                 'id': version_id, 'scmVersionName': commit_revision,
-                'filePath': svn_prefix + file['name'],
+                'filePath': svn_path_name,
                 'changeType': 'M', 'localType': 'L',
                 'localFilePath': abs_file_name,
                 'prevVersionId': prev_version_id
