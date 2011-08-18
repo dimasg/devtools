@@ -76,8 +76,8 @@ def init_vars():
     init_git_vars()
 
 
-def get_commit_hash():
-    return os.popen('git svn dcommit -n').readlines()[1]\
+def get_last_commit_hash():
+    return os.popen('git svn dcommit -n').readlines()[-1]\
         .rstrip('\n').split()[1]
 
 
@@ -259,7 +259,7 @@ def main(argv):
         review_id = int(argv.pop(0))
 
     init_vars()
-    commit_hash_id = get_commit_hash()
+    commit_hash_id = get_last_commit_hash()
     files = get_files(commit_hash_id, argv)
 
     cc_server = get_cc_server()
