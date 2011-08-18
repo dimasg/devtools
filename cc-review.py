@@ -151,6 +151,12 @@ def create_cc_review(cc_server):
 
 
 def update_cc_review(cc_server, review_id, commit_hash_id, files):
+    new_review = True
+    if review_id == 0:
+        review_id = create_cc_review(cc_server)
+    else:
+        new_review = False
+
     result = cc_server.ccollab3.queryObjectsSimple(
         'com.smartbear.ccollab.datamodel.ScmData',
         {
@@ -166,62 +172,73 @@ def update_cc_review(cc_server, review_id, commit_hash_id, files):
 
     for file in files:
         print 'Uploading file {0}...'.format(file['name']),
-        last_commit_info = os.popen('git svn log --limit 1 {0}'\
-            .format(file['name'])).readlines()[1].rstrip('\n').split(' | ')
-        commit_revision = str(parse_revision_id(last_commit_info[0]))
-        author = last_commit_info[1]
-        time = datetime.datetime.strptime(
-            last_commit_info[2][:19], '%Y-%m-%d %H:%M:%S'
-        )
-        file_changelist_id = cc_server.ccollab3.changelistCreate(
-            commit_revision, scm_id, '', time, author,
-            'fake comment', cc_guid
-        )
+
         abs_file_name = os.path.abspath(file['name'])
         svn_path_name = os.path.join(svn_prefix, file['name'])
-        prev_version_id = cc_server.ccollab3.versionCreate(
-            file_changelist_id, svn_path_name,
-            abs_file_name, commit_revision, 'A'
-        )
-        content = os.popen(
-            'git show {0}:{1}'.format(commit_hash_id, file['name'])
-        ).read()
-        content_md5 = get_str_md5(content)
 
-        prev_version_found = cc_server.ccollab3.versionSetContentByMd5(
-            prev_version_id, content_md5
-        )
-        if not prev_version_found:
-            cc_server.ccollab3.versionSetContent(
-                prev_version_id, xmlrpclib.Binary(content)
+        if new_review:
+            last_commit_info = os.popen('git svn log --limit 1 {0}'\
+                .format(file['name'])).readlines()[1].rstrip('\n').split(' | ')
+            commit_revision = str(parse_revision_id(last_commit_info[0]))
+            author = last_commit_info[1]
+            time = datetime.datetime.strptime(
+                last_commit_info[2][:19], '%Y-%m-%d %H:%M:%S'
+            )
+            file_changelist_id = cc_server.ccollab3.changelistCreate(
+                commit_revision, scm_id, '', time, author,
+                'fake comment', cc_guid
+            )
+            prev_version_id = cc_server.ccollab3.versionCreate(
+                file_changelist_id, svn_path_name,
+                abs_file_name, commit_revision, 'A'
             )
 
-        cc_server.ccollab3.save(
-            'com.smartbear.ccollab.datamodel.VersionData', {
-                'changelistId': file_changelist_id, 'contentMd5': content_md5,
-                'id': prev_version_id, 'scmVersionName': commit_revision,
-                'filePath': svn_path_name,
-                'changeType': 'A', 'localType': 'C',
-                'localFilePath': '', 'prevVersionId': 0,
-            }
-        )
+            content = os.popen(
+                'git show {0}:{1}'.format(commit_hash_id, file['name'])
+            ).read()
+            content_md5 = get_str_md5(content)
 
-        commit_revision = str(get_svn_revision(file['name']))
-        version_id = cc_server.ccollab3.versionCreate(
-            local_changelist_id, svn_path_name,
-            abs_file_name, commit_revision, 'M'
-        )
+            prev_version_found = cc_server.ccollab3.versionSetContentByMd5(
+                prev_version_id, content_md5
+            )
+            if not prev_version_found:
+                cc_server.ccollab3.versionSetContent(
+                    prev_version_id, xmlrpclib.Binary(content)
+                )
 
-        cc_server.ccollab3.save(
-            'com.smartbear.ccollab.datamodel.VersionData', {
-                'changelistId': local_changelist_id, 'contentMd5': '',
-                'id': version_id, 'scmVersionName': commit_revision,
-                'filePath': svn_path_name,
-                'changeType': 'M', 'localType': 'L',
-                'localFilePath': abs_file_name,
-                'prevVersionId': prev_version_id
-            }
-        )
+            cc_server.ccollab3.save(
+                'com.smartbear.ccollab.datamodel.VersionData', {
+                    'changelistId': file_changelist_id, 'contentMd5': content_md5,
+                    'id': prev_version_id, 'scmVersionName': commit_revision,
+                    'filePath': svn_path_name,
+                    'changeType': 'A', 'localType': 'C',
+                    'localFilePath': '', 'prevVersionId': 0,
+                }
+            )
+
+            commit_revision = str(get_svn_revision(file['name']))
+            version_id = cc_server.ccollab3.versionCreate(
+                local_changelist_id, svn_path_name,
+                abs_file_name, commit_revision, 'M'
+            )
+
+            cc_server.ccollab3.save(
+                'com.smartbear.ccollab.datamodel.VersionData', {
+                    'changelistId': local_changelist_id, 'contentMd5': '',
+                    'id': version_id, 'scmVersionName': commit_revision,
+                    'filePath': svn_path_name,
+                    'changeType': 'M', 'localType': 'L',
+                    'localFilePath': abs_file_name,
+                    'prevVersionId': prev_version_id
+                }
+            )
+        else:  # existing review
+            prev_version_id = 0
+            commit_revision = str(get_svn_revision(file['name']))
+            version_id = cc_server.ccollab3.versionCreate(
+                local_changelist_id, svn_path_name,
+                abs_file_name, commit_revision, 'M'
+            )
 
         file_h = open(file['name'], 'rb')
         content = file_h.read()
@@ -263,9 +280,6 @@ def main(argv):
     files = get_files(commit_hash_id, argv)
 
     cc_server = get_cc_server()
-    if review_id == 0:
-        review_id = create_cc_review(cc_server)
-
     update_cc_review(cc_server, review_id, commit_hash_id, files)
 
 
