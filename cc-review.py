@@ -264,7 +264,10 @@ def update_cc_review(cc_server, review_id, commit_hash_id, files):
 
     cc_server.ccollab3.reviewAddChangelist(review_id, local_changelist_id)
 
-    print '\nReview with id {0} was created.'.format(review_id)
+    if new_review:
+        print '\nReview with id {0} was created.'.format(review_id)
+    else:
+        print '\nReview with id {0} was updated.'.format(review_id)
 #    print 'http://{0}/index.jsp?page=ReviewDisplay&reviewid={1}'.format(
 #        cc_url, review_id
 #    )
