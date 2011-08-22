@@ -140,6 +140,12 @@ def get_svn_commit_info(filename):
     return commit_revision, commit_author, commit_time
 
 
+def get_git_last_commit_message():
+    commit_msg = os.popen('git log -n 1 --format=format:"%s"')\
+        .readlines()[0].rstrip('\n').replace('@noreview', '').rstrip(' ')
+    return commit_msg
+
+
 def get_cc_server():
     cc_server = xmlrpclib.ServerProxy(cc_url)
     #if os.environ['CC_DEBUG']:
@@ -159,7 +165,10 @@ def get_cc_server():
 
 
 def create_cc_review(cc_server):
-    return cc_server.ccollab3.reviewCreate(svn_login, 'Untitled')
+    title = get_git_last_commit_message()
+    if title == '':
+        title = 'Untitled'
+    return cc_server.ccollab3.reviewCreate(svn_login, title)
 
 
 def update_cc_review(cc_server, review_id, commit_hash_id, files):
