@@ -214,7 +214,8 @@ def update_cc_review(cc_server, review_id, commit_hash_id, files):
 
             cc_server.ccollab3.save(
                 'com.smartbear.ccollab.datamodel.VersionData', {
-                    'changelistId': file_changelist_id, 'contentMd5': content_md5,
+                    'changelistId': file_changelist_id,
+                    'contentMd5': content_md5,
                     'id': prev_version_id, 'scmVersionName': commit_revision,
                     'filePath': svn_path_name,
                     'changeType': 'A', 'localType': 'C',
