@@ -70,13 +70,14 @@ def get_str_md5(str):
 
 
 def init_vars():
+    global local_guid
     local_guid = get_str_md5(str(datetime.datetime.now()))
     init_cc_vars()
     init_svn_vars()
     init_git_vars()
 
 
-def get_last_commit_hash():
+def get_svn_last_commit_hash():
     return os.popen('git svn dcommit -n').readlines()[-1]\
         .rstrip('\n').split()[1]
 
@@ -286,7 +287,7 @@ def main(argv):
         review_id = int(argv.pop(0))
 
     init_vars()
-    commit_hash_id = get_last_commit_hash()
+    commit_hash_id = get_svn_last_commit_hash()
     files = get_files(commit_hash_id, argv)
 
     cc_server = get_cc_server()
