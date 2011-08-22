@@ -128,6 +128,17 @@ def get_svn_revision(filename):
     return Nil
 
 
+def get_svn_commit_info(filename):
+    last_commit_info = os.popen('git svn log --limit 1 {0}'\
+        .format(filename)).readlines()[1].rstrip('\n').split(' | ')
+    commit_revision = str(parse_revision_id(last_commit_info[0]))
+    commit_author = last_commit_info[1]
+    commit_time = datetime.datetime.strptime(
+        last_commit_info[2][:19], '%Y-%m-%d %H:%M:%S'
+    )
+    return commit_revision, commit_author, commit_time
+
+
 def get_cc_server():
     cc_server = xmlrpclib.ServerProxy(cc_url)
     #if os.environ['CC_DEBUG']:
@@ -177,15 +188,10 @@ def update_cc_review(cc_server, review_id, commit_hash_id, files):
         svn_path_name = os.path.join(svn_prefix, file['name'])
 
         if new_review:
-            last_commit_info = os.popen('git svn log --limit 1 {0}'\
-                .format(file['name'])).readlines()[1].rstrip('\n').split(' | ')
-            commit_revision = str(parse_revision_id(last_commit_info[0]))
-            author = last_commit_info[1]
-            time = datetime.datetime.strptime(
-                last_commit_info[2][:19], '%Y-%m-%d %H:%M:%S'
-            )
+            commit_revision, commit_author, commit_time =\
+                get_svn_commit_info(file['name'])
             file_changelist_id = cc_server.ccollab3.changelistCreate(
-                commit_revision, scm_id, '', time, author,
+                commit_revision, scm_id, '', commit_time, commit_author,
                 'fake comment', cc_guid
             )
             prev_version_id = cc_server.ccollab3.versionCreate(
