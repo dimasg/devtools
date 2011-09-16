@@ -106,6 +106,7 @@ def get_files(hash_id, argv):
 
     print '\nPress Enter to continue...',
     sys.stdin.readline()
+    print '\n'
 
     return result
 
@@ -142,7 +143,9 @@ def get_svn_commit_info(filename):
 
 def get_git_last_commit_message():
     commit_msg = os.popen('git log -n 1 --format=format:"%s"')\
-        .readlines()[0].rstrip('\n').replace('@noreview', '').rstrip(' ')
+        .readlines()[0].rstrip('\n').replace('@noreview', '')\
+        .replace('\\\'', '\'').replace('\\\"', '\"')\
+        .rstrip(' ')
     return commit_msg
 
 
@@ -186,13 +189,15 @@ def update_cc_review(cc_server, review_id, commit_hash_id, files):
     )
     scm_id = result[0]['id']
 
+    print 'Creating changelist ...',
     local_changelist_id = cc_server.ccollab3.changelistCreate(
         '', scm_id, local_guid, datetime.datetime.now(), svn_login,
         'Local changes', cc_guid
     )
+    print 'Ok!'
 
     for file in files:
-        print 'Uploading file {0}...'.format(file['name']),
+        print 'Uploading file {0} ...'.format(file['name']),
 
         abs_file_name = os.path.abspath(file['name'])
         svn_path_name = os.path.join(svn_prefix, file['name'])
@@ -291,6 +296,9 @@ def update_cc_review(cc_server, review_id, commit_hash_id, files):
 
 
 def main(argv):
+    # unbuffered stdout
+    sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
+
     review_id = 0
     if len(argv) > 0 and argv[0].isdigit():
         review_id = int(argv.pop(0))
