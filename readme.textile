@@ -1,0 +1,6 @@
+h2. Git, Code Collaborator
+
+Scripts for review generation from git:
+* cc-review.rb - original ruby script from https://github.com/sibprogrammer/cc-review.git
+* cc-review.py - my version in python
+
