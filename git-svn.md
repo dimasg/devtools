@@ -3,6 +3,7 @@ git-svn
 
 Везде git-svn можно заменить на “git svn” если нет такого скрипта или алиаса ...
 Клонировать репозиторий целиком:
+
     git-svn clone -s http://example.com/my_subversion_repo local_dir
 
 Добавить игноры из svn в git
@@ -24,5 +25,29 @@ git-svn
     git-svn dcommit
 
 Внимание! Каждый коммит в git при таком коммите пойдет отдельным коммитом в svn
+
+Branches
+--------
+
+Вариант 1: открываем файл .git/config, там будет что-то похожее на:
+
+    [svn-remote "svn"]
+        url = svn+ssh://your-server/home/svn/project-name/trunk
+        fetch = :refs/remotes/git-svn
+
+Добавляем нужный бранч:
+
+    [svn-remote "svn34"]
+        url = svn+ssh://your-server/home/svn/project-name/branches/3.4.x
+        fetch = :refs/remotes/git-svn-3.4
+
+Вытаскиваем нужный бранч:
+
+    git-svn fetch svn34 -r MMMM
+
+Дальше остается только перейти на этот бранч, создать на нём нужный рабочий бранч, дальше как всегда:
+
+    git checkout git-svn-3.4
+    git checkout -b master-3.4.x
 
 
