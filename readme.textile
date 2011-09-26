@@ -1,6 +1,6 @@
 h1. Git
 
-* "git-svn":https://github.com/dimasg/devtools/blob/master/git-svn.textile - git-svn notes (russian language)
+* "git-svn.md":https://github.com/dimasg/devtools/blob/master/git-svn.md - git-svn notes (russian language)
 
 h2. Git, Code Collaborator
 
