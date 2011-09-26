@@ -50,4 +50,30 @@ Branches
     git checkout git-svn-3.4
     git checkout -b master-3.4.x
 
+Tools
+-----
+
+Гит может использовать vim diff для разрешения конфликтов:
+
+    git mergetool -t vimdiff
+
+Прописать его сразу для всех хранилищ:
+
+    git config --global merge.tool vimdiff
+
+Откатить  последнее изменение (коммит),  но не откатывать правки:
+
+    git reset HEAD~1
+
+Откатить (совсем) последнее изменение:
+
+    git reset --hard HEAD~1
+
+Поменять порядок, слить и т.д. последние пять изменений:
+
+    git rebase -i HEAD~5
+
+Посмотреть правки конкретного коммита:
+
+    git show COMMIT_TAG
 
