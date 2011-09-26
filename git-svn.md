@@ -1,12 +1,12 @@
 git-svn
 =======
 
-Везде git-svn можно заменить на “git svn” если нет такого скрипта или алиаса ...
+Везде git-svn можно заменить на `“git svn”` если нет такого скрипта или алиаса ...
 Клонировать репозиторий целиком:
 
     git-svn clone -s http://example.com/my_subversion_repo local_dir
 
-Добавить игноры из svn в git
+Добавить игноры из `svn` в `git`
 
     git-svn show-ignore > .gitignore
 
@@ -20,16 +20,30 @@ git-svn
 
     git-svn rebase
 
-Закоммитить все закоммиченные в git изменения в svn:
+Закоммитить все закоммиченные в `git` изменения в `svn`:
 
     git-svn dcommit
 
-Внимание! Каждый коммит в git при таком коммите пойдет отдельным коммитом в svn
+Внимание! Каждый коммит в `git` при таком коммите пойдет отдельным коммитом в `svn`
+
+Проблема1: если есть локальные изменения, `git` не даст сделать `svn rebase`
+Решение: «прячем» правки с помощью `git-stash`, делаем `rebase`, возвращаем правки через `git-stash apply (git-stash pop)`
+
+Проблема2: `ccollab` не понимает `git` напрямую или его `diff`ы
+Решение: `ccollab  addfiles new <files>` для файла без изменений (используем `git-stash` если они уже есть), потом `ccollab addchanges <review #> <files>`
+Решение2: "cc-review.py":https://raw.github.com/dimasg/devtools/master/cc-review.py, готовый скрипт для создания ревью из закомиченных изменений текущей ветки
+Решение3: `git diff --patch --no-prefix` (требует проверки)
+
+Проблема3: Как сделать так, чтобы правки ушли в `svn` одним коммитом?
+Решение: делаем для правок новую ветку `git checkout -b new_branch_name`
+Когда всё сделано, мержим её через `git merge --squash <feature_branch> -m <msg>`.
+`--squash` собственно и «сжимает» все коммиты в один, после чего остается сделать `dcommit`. Если забыли указать корректное сообщение для мержа, добавить еще один файл и т.д., можно это сделать перед коммитом в `svn` с помощью `git commit –-amend`.
+
 
 Branches
 --------
 
-Вариант 1: открываем файл .git/config, там будет что-то похожее на:
+Открываем файл .git/config, там будет что-то похожее на:
 
     [svn-remote "svn"]
         url = svn+ssh://your-server/home/svn/project-name/trunk
@@ -49,6 +63,7 @@ Branches
 
     git checkout git-svn-3.4
     git checkout -b master-3.4.x
+
 
 Tools
 -----
