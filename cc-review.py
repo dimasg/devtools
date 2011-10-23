@@ -149,6 +149,10 @@ def get_git_last_commit_message():
     return commit_msg
 
 
+def updade_commit_msg(review_id):
+    return
+
+
 def get_cc_server():
     cc_server = xmlrpclib.ServerProxy(cc_url)
     #if os.environ['CC_DEBUG']:
@@ -203,7 +207,7 @@ def update_cc_review(cc_server, review_id, commit_hash_id, files):
         svn_path_name = os.path.join(svn_prefix, file['name'])
 
         if new_review:
-            commit_revision, commit_author, commit_time =\
+            commit_revision, commit_author, commit_time = \
                 get_svn_commit_info(file['name'])
             file_changelist_id = cc_server.ccollab3.changelistCreate(
                 commit_revision, scm_id, '', commit_time, commit_author,
@@ -288,6 +292,7 @@ def update_cc_review(cc_server, review_id, commit_hash_id, files):
 
     if new_review:
         print '\nReview with id {0} was created.'.format(review_id)
+        updade_commit_msg(review_id)
     else:
         print '\nReview with id {0} was updated.'.format(review_id)
 #    print 'http://{0}/index.jsp?page=ReviewDisplay&reviewid={1}'.format(
