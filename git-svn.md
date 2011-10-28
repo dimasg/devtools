@@ -93,3 +93,7 @@ Tools
 
     git show COMMIT_TAG
 
+Посмотреть файлы, измененные в конкретном коммите:
+
+    git show --pretty="format:" --name-only COMMIT_TAG
+
