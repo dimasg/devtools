@@ -94,7 +94,7 @@ def get_files(hash_id, argv):
                     break
             else:
                 continue
-        if file_info[4] != 'M':
+        if file_info[4] != 'M' and file_info[4] != 'A':
             print 'Unsupported action type: {0}'.format(file_info[4])
             exit(3)
         result.append({'op_type': file_info[4], 'name': file_info[5]})
@@ -202,7 +202,7 @@ def update_cc_review(cc_server, review_id, commit_hash_id, files):
         abs_file_name = os.path.abspath(file['name'])
         svn_path_name = os.path.join(svn_prefix, file['name'])
 
-        if new_review:
+        if new_review and file['op_type'] == 'M':
             commit_revision, commit_author, commit_time =\
                 get_svn_commit_info(file['name'])
             file_changelist_id = cc_server.ccollab3.changelistCreate(
@@ -256,7 +256,11 @@ def update_cc_review(cc_server, review_id, commit_hash_id, files):
             )
         else:  # existing review
             prev_version_id = 0
-            commit_revision = str(get_svn_revision(file['name']))
+            if file['op_type'] == 'M':
+                commit_revision = str(get_svn_revision(file['name']))
+            else:
+                commit_revision = ''
+
             version_id = cc_server.ccollab3.versionCreate(
                 local_changelist_id, svn_path_name,
                 abs_file_name, commit_revision, 'M'
