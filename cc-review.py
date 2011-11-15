@@ -142,8 +142,8 @@ def get_svn_commit_info(filename):
 
 
 def get_git_last_commit_message():
-    commit_msg = os.popen('git log -n 1 --format=format:"%s"')\
-        .readlines()[0].rstrip('\n').replace('@noreview', '')\
+    commit_msg = os.popen('git log -n 1 --format=format:"%B"')\
+        .readline().rstrip('\n').replace('@noreview', '')\
         .replace('\\\'', '\'').replace('\\\"', '\"')\
         .rstrip(' ')
     return commit_msg
