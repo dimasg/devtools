@@ -152,7 +152,7 @@ def get_git_last_commit_message():
 def updade_commit_msg(review_id):
     commit_msg = os.popen('git log -n 1 --format=format:"%B"')\
         .read()
-    if commit_msg.find('@noreview'):
+    if commit_msg.find('@noreview') >= 0:
         os.popen('git commit --amend -F -', 'w').write(
             commit_msg.replace('@noreview', '@' + str(review_id))
         )
