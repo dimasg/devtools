@@ -97,3 +97,7 @@ Tools
 
     git show --pretty="format:" --name-only COMMIT_TAG
 
+Посмотреть содержимое последнего stash`а в виде патча:
+
+    git stash show -p stash{0}
+
