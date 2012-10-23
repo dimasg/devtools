@@ -146,6 +146,12 @@ def get_git_last_commit_message():
         .readline().rstrip('\n').replace('@noreview', '')\
         .replace('\\\'', '\'').replace('\\\"', '\"')\
         .rstrip(' ')
+
+    if commit_msg.find('worked') >= 0 or commit_msg.find('fixed') >= 0:
+        commit_msg = re.sub(
+            ':(?:fixed|worked)\(.*\)', '', commit_msg
+        )
+
     return commit_msg
 
 
