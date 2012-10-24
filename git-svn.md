@@ -103,6 +103,6 @@ Tools
 
 Поискать в коммитах (особенно удобно искать удаленные строки):
 
-    git log -S<test> <filename>|<-- path_containing_change> [--since=YYYY.MM.DD] [--until=YYYY.MM.DD]
+    git log -S<text> <filename>|<-- path_containing_change> [--since=YYYY.MM.DD] [--until=YYYY.MM.DD]
 
 
