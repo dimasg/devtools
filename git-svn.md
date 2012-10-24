@@ -101,3 +101,8 @@ Tools
 
     git stash show -p stash{0}
 
+Поискать в коммитах (особенно удобно искать удаленные строки):
+
+    git log -S<test> <filename>|<-- path_containing_change> [--since=YYYY.MM.DD] [--until=YYYY.MM.DD]
+
+
