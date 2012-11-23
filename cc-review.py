@@ -96,6 +96,7 @@ def get_files(hash_id, argv):
                 continue
         if file_info[4] != 'M' and file_info[4] != 'A':
             print 'Unsupported action type: {0}'.format(file_info[4])
+            continue
             exit(3)
         result.append({'op_type': file_info[4], 'name': file_info[5]})
         print '{0} {1}'.format(file_info[4], file_info[5])
