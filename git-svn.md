@@ -113,4 +113,10 @@ Tools
 
     git log -S<text> <filename>|<-- path_containing_change> [--since=YYYY.MM.DD] [--until=YYYY.MM.DD]
 
+Показать правки по одному файлу из stash`а с номером N:
 
+    git diff stash@{N}^1 stash@{N} -- <filename>
+
+Сразу применить эти правки:
+
+    git diff stash@{N}^1 stash@{N} -- <filename> | git apply
