@@ -40,8 +40,16 @@ def init_cc_vars():
 def init_svn_vars():
     lines = os.popen('cat ~/.subversion/auth/svn.simple/*').readlines()
     global svn_login, svn_pwd
-    svn_login = lines[15].rstrip('\n')
-    svn_pwd = lines[7].rstrip('\n')
+    if len(lines) > 15:
+        svn_login = lines[15].rstrip('\n')
+        svn_pwd = lines[7].rstrip('\n')
+    else:
+        svn_login = raw_input('Enter username:')
+        if len(lines) > 7:
+            svn_pwd = lines[7].rstrip('\n')
+        else:
+            import getpass
+            svn_pwd = getpass.getpass('Enter password:')
 
 
 def init_git_vars():
