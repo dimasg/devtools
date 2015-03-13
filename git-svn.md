@@ -15,7 +15,7 @@ git-svn
 
     mkdir local_dir
     git-svn init http://example.com/my_subversion_repo
-    git-svn fetch –rREVISION
+    git-svn fetch -rREVISION
 
 Обновиться до текущей ревизии:
 
@@ -43,7 +43,7 @@ git-svn
 
 Решение: делаем для правок новую ветку `git checkout -b new_branch_name`
 Когда всё сделано, мержим её через `git merge --squash <feature_branch> -m <msg>`.
-`--squash` собственно и «сжимает» все коммиты в один, после чего остается сделать `dcommit`. Если забыли указать корректное сообщение для мержа, добавить еще один файл и т.д., можно это сделать перед коммитом в **svn** с помощью `git commit –-amend`.
+`--squash` собственно и «сжимает» все коммиты в один, после чего остается сделать `dcommit`. Если забыли указать корректное сообщение для мержа, добавить еще один файл и т.д., можно это сделать перед коммитом в **svn** с помощью `git commit --amend`.
 
 Проблема4: svn::externals
 
