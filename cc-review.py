@@ -44,11 +44,14 @@ def init_svn_vars():
         svn_login = lines[15].rstrip('\n')
         svn_pwd = lines[7].rstrip('\n')
     else:
-        svn_login = raw_input('Enter username:')
+        import getpass
+        username = getpass.getuser()
+        svn_login = raw_input('Enter username [{0}]:'.format(username))
+        if not svn_login:
+            svn_login = username
         if len(lines) > 7:
             svn_pwd = lines[7].rstrip('\n')
         else:
-            import getpass
             svn_pwd = getpass.getpass('Enter password:')
 
 
