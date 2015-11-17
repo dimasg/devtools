@@ -120,3 +120,13 @@ Tools
 Сразу применить эти правки:
 
     git diff stash@{N}^1 stash@{N} -- <filename> | git apply
+
+Перенести git svn на новый url:
+
+    изменить svn-remote в .git/config
+    git svn fetch (должен загрузить хотя бы одно новое изменение!)
+    возвращаем прежний svn-remote в .git/config
+    git svn rebase -l
+    опять менем svn-remote на новый url
+    все, теперь git svn rebase должен работать с новым адресом
+
