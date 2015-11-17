@@ -127,6 +127,6 @@ Tools
     git svn fetch (должен загрузить хотя бы одно новое изменение!)
     возвращаем прежний svn-remote в .git/config
     git svn rebase -l
-    опять менем svn-remote на новый url
+    опять меняем svn-remote на новый url
     все, теперь git svn rebase должен работать с новым адресом
 
