@@ -124,7 +124,7 @@ Tools
 Перенести git svn на новый url:
 
     изменить svn-remote в .git/config
-    git svn fetch (должен загрузить хотя бы одно новое изменение!)
+    git svn fetch [<svn=remote name>] (должен загрузить хотя бы одно новое изменение! указываем svn-remote имя для бранча!)
     возвращаем прежний svn-remote в .git/config
     git svn rebase -l
     опять меняем svn-remote на новый url
