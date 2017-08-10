@@ -8,3 +8,6 @@ Scripts for review generation from git:
 * "cc-review.rb":https://github.com/dimasg/devtools/blob/master/cc-review.rb - original ruby script from https://github.com/sibprogrammer/cc-review.git
 * "cc-review.py":https://github.com/dimasg/devtools/blob/master/cc-review.py - my version in python
 
+h1. Python
+
+* "python-cookbook.md":/python_cookbook.md - small python cookbook
