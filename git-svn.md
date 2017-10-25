@@ -109,6 +109,11 @@ Tools
 
     git stash show -p stash{0}
 
+Переименовать stash:
+
+    git stash drop stash@{N}    <- тут надо запомнить SHA, который вернет команда
+    git stash store -m "Next stash name" XXXX <- XXX - SHA, который вернула предыдущая команда
+
 Поискать в коммитах (особенно удобно искать удаленные строки):
 
     git log -S<text> <filename>|<-- path_containing_change> [--since=YYYY.MM.DD] [--until=YYYY.MM.DD]
