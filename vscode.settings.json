@@ -1,7 +1,8 @@
 {
       // editor
-    "editor.fontSize": 14,
-    "editor.fontFamily": "'Hack'", // , Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'
+    "editor.fontSize": 12,
+    "editor.fontFamily": "'Monoid', 'Fira Code', 'Hack', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontWeight": "500",
     "editor.fontLigatures": true,
     "editor.insertSpaces": false,
     "editor.tabSize": 4,
