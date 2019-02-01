@@ -1,0 +1,44 @@
+{
+      // editor
+    "editor.fontSize": 14,
+    "editor.fontFamily": "'Hack'", // , Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'
+    "editor.fontLigatures": true,
+    "editor.insertSpaces": false,
+    "editor.tabSize": 4,
+    "editor.folding": true,
+    "editor.minimap.enabled": false,
+      // files
+    "files.autoSave": "onFocusChange",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true
+    },
+    "files.trimTrailingWhitespace": true,
+      // terminal
+    "terminal.integrated.rendererType": "dom",
+      // window
+    "window.zoomLevel": 1,
+    "window.titleBarStyle": "custom",
+    "workbench.statusBar.visible": true,
+      // workbench
+    "workbench.activityBar.visible": true,
+    "workbench.colorTheme": "Monokai",
+    "workbench.iconTheme": "vscode-icons",
+      // vim
+    "vim.visualstar": true,
+    "vim.history": 1024,
+    "vim.useSystemClipboard": true,
+      // telemetry
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "rest-client.enableTelemetry": false,
+      // gitlens
+    "gitlens.advanced.telemetry.enabled": false,
+      // vtools
+    "vtools.autoHideSideBar": true,
+    "vtools.autoHideBottomBar": true,
+      //
+}
