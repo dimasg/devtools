@@ -29,11 +29,14 @@
     "workbench.colorTheme": "Monokai",
     "workbench.iconTheme": "vscode-icons",
       // vim
-    "vim.visualstar": true,
-    "vim.history": 1024,
-    "vim.useSystemClipboard": true,
+    "vim.autoindent": "true",
     "vim.cursorStylePerMode.normal": "block",
     "vim.cursorStylePerMode.insert": "underline",
+    "vim.ignorecase": "true",
+    "vim.history": 1024,
+    "vim.smartcase": "true",
+    "vim.useSystemClipboard": true,
+    "vim.visualstar": true,
       // telemetry
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
