@@ -32,6 +32,8 @@
     "vim.visualstar": true,
     "vim.history": 1024,
     "vim.useSystemClipboard": true,
+    "vim.cursorStylePerMode.normal": "block",
+    "vim.cursorStylePerMode.insert": "underline",
       // telemetry
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
