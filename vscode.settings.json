@@ -37,14 +37,25 @@
     "vim.smartcase": "true",
     "vim.useSystemClipboard": true,
     "vim.visualstar": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+    {
+        "before": ["<leader>", "d"],
+        "after": [],
+        "commands": [
+            {
+                "command": "gitlens.diffWithPrevious"
+            }
+        ]
+    }]
       // telemetry
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
     "rest-client.enableTelemetry": false,
+      // tslint
+    "tslint.jsEnable": true,
       // gitlens
     "gitlens.advanced.telemetry.enabled": false,
       // vtools
     "vtools.autoHideSideBar": true,
     "vtools.autoHideBottomBar": true,
-      //
 }
