@@ -7,5 +7,37 @@
 	{
 		"key": "ctrl+shift+s",
 		"command": "workbench.action.files.saveAll"
-	}
+	},
+    {
+        "key": "ctrl+w left",
+        "command": "workbench.action.navigateLeft"
+    },
+    {
+        "key": "ctrl+w right",
+        "command": "workbench.action.navigateRight"
+    },
+    {
+        "key": "ctrl+w up",
+        "command": "workbench.action.navigateUp"
+    },
+    {
+        "key": "ctrl+w down",
+        "command": "workbench.action.navigateDown"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.navigateLeft"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.navigateRight"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.navigateUp"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.navigateDown"
+    }
 ]
