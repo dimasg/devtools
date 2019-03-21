@@ -29,12 +29,12 @@
     "workbench.colorTheme": "Monokai",
     "workbench.iconTheme": "vscode-icons",
       // vim
-    "vim.autoindent": "true",
+    "vim.autoindent": true,
     "vim.cursorStylePerMode.normal": "block",
     "vim.cursorStylePerMode.insert": "underline",
-    "vim.ignorecase": "true",
+    "vim.ignorecase": true,
     "vim.history": 1024,
-    "vim.smartcase": "true",
+    "vim.smartcase": true,
     "vim.useSystemClipboard": true,
     "vim.visualstar": true,
     "vim.normalModeKeyBindingsNonRecursive": [
@@ -46,7 +46,7 @@
                 "command": "gitlens.diffWithPrevious"
             }
         ]
-    }]
+    }],
       // telemetry
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
