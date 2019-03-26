@@ -35,6 +35,7 @@
     "vim.ignorecase": true,
     "vim.history": 1024,
     "vim.smartcase": true,
+    "vim.substituteGlobalFlag": true,
     "vim.useSystemClipboard": true,
     "vim.visualstar": true,
     "vim.normalModeKeyBindingsNonRecursive": [
