@@ -1,7 +1,7 @@
 {
       // editor
     "editor.fontSize": 12,
-    "editor.fontFamily": "'Monoid', 'Fira Code', 'Hack', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontFamily": "'Fira Code', 'Monoid', 'Hack', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "editor.fontWeight": "500",
     "editor.fontLigatures": true,
     "editor.insertSpaces": false,
@@ -35,7 +35,7 @@
     "vim.ignorecase": true,
     "vim.history": 1024,
     "vim.smartcase": true,
-    "vim.substituteGlobalFlag": true,
+    "vim.gdefault": true,
     "vim.useSystemClipboard": true,
     "vim.visualstar": true,
     "vim.normalModeKeyBindingsNonRecursive": [
@@ -59,4 +59,6 @@
       // vtools
     "vtools.autoHideSideBar": true,
     "vtools.autoHideBottomBar": true,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 }
