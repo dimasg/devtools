@@ -1,0 +1,41 @@
+{
+  "title": "Non-modal layout switcher",
+  "rules": [
+    {
+      "description": "CapsLock->EN, LeftShift+CapsLock->RU",
+      "manipulators": [
+                {
+          "type": "basic",
+          "from": {
+            "key_code": "caps_lock",
+            "modifiers": {
+              "mandatory": [
+                "left_shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "select_input_source": {
+                "language": "ru"
+              }
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "caps_lock"
+          },
+          "to": [
+            {
+              "select_input_source": {
+                "language": "en"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
