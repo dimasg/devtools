@@ -1,8 +1,9 @@
 {
       // editor
     "editor.fontSize": 12,
-    "editor.fontFamily": "'Fira Code', 'Monoid', 'Hack', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-    "editor.fontWeight": "500",
+    "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
+    //"editor.fontWeight": "normal"
+    "editor.fontWeight": "400",
     "editor.fontLigatures": true,
     "editor.insertSpaces": false,
     "editor.tabSize": 4,
