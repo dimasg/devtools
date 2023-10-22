@@ -18,6 +18,8 @@ def find_duplicates(cmd_args):
                 dirs.remove(next_dir)
 
         for file_name in files:
+            if file_name in cmd_args.ignore_file:
+                continue
             file_path = os.path.join(root, file_name)
             stats = os.stat(file_path)
             logging.debug('File %s stats %s', file_path, stats)
@@ -69,6 +71,11 @@ def main():
         '--ignore-dir', action='store',
         nargs='*', default=[],
         help='ignore one or more dirs'
+    )
+    parser.add_argument(
+        '--ignore-file', action='store',
+        nargs='*', default=[],
+        help='ignore one or more files'
     )
     parser.add_argument(
         '--ignore-size', action='store_const',
