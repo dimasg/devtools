@@ -17,7 +17,7 @@ def find_duplicates(cmd_args):
             stats = os.stat(file_path)
             logging.debug('File %s stats %s', file_path, stats)
             file_info = {'path': root, 'size': stats.st_size}
-            if (file_name in files_info):
+            if file_name in files_info:
                 files_info[file_name].append(file_info)
             else:
                 files_info[file_name] = [file_info]
@@ -32,8 +32,6 @@ def find_duplicates(cmd_args):
         print('File {0} found in:'.format(file_name))
         for info in infos:
             print('\tsize: {0}, path: {1}'.format(info['size'], info['path']))
-
-    return
 
 
 def main():
@@ -64,7 +62,6 @@ def main():
     logging.debug('Parsed command line args: %s', cmd_args)
 
     find_duplicates(cmd_args)
-    exit(0)
 
 
 if __name__ == "__main__":
