@@ -23,15 +23,15 @@ def find_duplicates(cmd_args):
                 files_info[file_name] = [file_info]
     logging.debug('Files:\n%s', files_info)
 
-    print('Found files: {0}'.format(len(files_info.keys())))
+    print(f'Found files: {len(files_info.keys())}')
     print('Duplicates found:')
 
     for file_name, infos in files_info.items():
         if len(infos) < 2:
             continue
-        print('File {0} found in:'.format(file_name))
+        print(f'File {file_name} found in:'.format(file_name))
         for info in infos:
-            print('\tsize: {0}, path: {1}'.format(info['size'], info['path']))
+            print(f"\tsize: {info['size']}, path: {info['path']}")
 
 
 def main():
