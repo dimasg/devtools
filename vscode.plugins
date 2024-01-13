@@ -1,11 +1,17 @@
+bierner.lit-html
 dbaeumer.vscode-eslint
 eamodio.gitlens
+golang.go
+kshetline.ligatures-limited
+lokalise.i18n-ally
 mgmcdermott.vscode-language-babel
 ms-dotnettools.csharp
 ms-python.python
+ms-python.vscode-pylance
 ms-toolsai.jupyter
 ms-vscode.vscode-typescript-tslint-plugin
 octref.vetur
+stylelint.vscode-stylelint
 VisualStudioExptTeam.vscodeintellicode
 vscode-icons-team.vscode-icons
 vscodevim.vim
