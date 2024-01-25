@@ -11,7 +11,9 @@ ms-python.vscode-pylance
 ms-toolsai.jupyter
 ms-vscode.vscode-typescript-tslint-plugin
 octref.vetur
+ReSvelte.resvelte
 stylelint.vscode-stylelint
+svelte.svelte-vscode
 VisualStudioExptTeam.vscodeintellicode
 vscode-icons-team.vscode-icons
 vscodevim.vim
