@@ -5,8 +5,8 @@
     //"editor.fontWeight": "normal"
     "editor.fontWeight": "400",
     "editor.fontLigatures": true,
-    "editor.insertSpaces": false,
-    "editor.tabSize": 4,
+    "editor.insertSpaces": auto,
+    "editor.tabSize": 0,
     "editor.folding": true,
     "editor.minimap.enabled": false,
       // files
@@ -78,4 +78,12 @@
     "vtools.autoHideBottomBar": true,
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "extensions.autoUpdate": false,
+    "svelte.enable-ts-plugin": true,
+    "stylelint.validate": [
+      "css",
+      "less",
+      "postcss",
+      "svelte"
+    ],
 }
