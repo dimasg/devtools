@@ -30,6 +30,12 @@ def find_duplicates(cmd_args):
                     files_info[file_name].append(file_info)
                 else:
                     files_info[file_name] = [file_info]
+            elif cmd_args.size_only:
+                file_info['name'] = file_name
+                if size in files_info:
+                    files_info[size].append(file_info)
+                else:
+                    files_info[size] = [file_info]
             else:
                 if file_name in files_info:
                     if size in files_info[file_name]:
@@ -51,6 +57,12 @@ def find_duplicates(cmd_args):
             print(f'File {file_name} found in:'.format(file_name))
             for info in infos:
                 print(f"\tsize: {info['size']}, path: {info['path']}")
+        elif cmd_args.size_only:
+            if len(infos) < 2:
+                continue
+            print(f'Files with size {file_name} found in:'.format(file_name))
+            for info in infos:
+                print(f"\tsize: {info['size']}, path: {info['path']}, name: {info['name']}")
         else:
             for file_size, size_infos in infos.items():
                 if len(size_infos) < 2:
@@ -81,6 +93,11 @@ def main():
         '--ignore-size', action='store_const',
         const=True, default=False,
         help='ignore files size'
+    )
+    parser.add_argument(
+        '--size-only', action='store_const',
+        const=True, default=False,
+        help='group only by size'
     )
     parser.add_argument(
         '--debug', action='store_const',
