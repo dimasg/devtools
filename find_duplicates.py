@@ -17,6 +17,16 @@ def find_duplicates(cmd_args):
                 logging.debug('%s will be skipped', next_dir)
                 dirs.remove(next_dir)
 
+        min_size = None
+        if cmd_args.size_only is not None:
+            min_size = int(cmd_args.size_only.rstrip('kmg'))
+            if cmd_args.size_only.endswith('k'):
+                min_size *= 1024
+            elif cmd_args.size_only.endswith('m'):
+                min_size *= 1024*1024
+            elif cmd_args.size_only.endswith('g'):
+                min_size *= 1024*1024*1024
+
         for file_name in files:
             if file_name in cmd_args.ignore_file:
                 continue
@@ -31,6 +41,8 @@ def find_duplicates(cmd_args):
                 else:
                     files_info[file_name] = [file_info]
             elif cmd_args.size_only:
+                if size < min_size:
+                    continue
                 file_info['name'] = file_name
                 if size in files_info:
                     files_info[size].append(file_info)
@@ -95,8 +107,8 @@ def main():
         help='ignore files size'
     )
     parser.add_argument(
-        '--size-only', action='store_const',
-        const=True, default=False,
+        '--size-only', action='store',
+        nargs='?', const=1,
         help='group only by size'
     )
     parser.add_argument(
