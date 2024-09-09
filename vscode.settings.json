@@ -86,4 +86,9 @@
       "postcss",
       "svelte"
     ],
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "svelte"
+    ],
 }
