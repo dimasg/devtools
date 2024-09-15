@@ -108,7 +108,7 @@ def main():
     )
     parser.add_argument(
         '--size-only', action='store',
-        nargs='?', const=1,
+        nargs='?', const='1',
         help='group only by size'
     )
     parser.add_argument(
