@@ -12,5 +12,8 @@ config.color_scheme = 'Hipster Green'
 config.font = wezterm.font('Iosevka Term Curly', {weight = 'Medium'}) 
 config.font_size = 14
 
+config.initial_rows = 40
+config.initial_cols = 132
+
 -- and finally, return the configuration to wezterm
 return config
