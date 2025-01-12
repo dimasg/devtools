@@ -16,6 +16,8 @@ config.font_size = 14
 config.initial_rows = 40
 config.initial_cols = 132
 
+config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
+
 config.keys = {
     -- show the pane selection mode, but have it swap the active and selected panes
     {
@@ -24,6 +26,17 @@ config.keys = {
         action = act.PaneSelect {
             mode = 'SwapWithActive',
         },
+    },
+    -- splitting
+    {
+        mods   = "LEADER",
+        key    = "-",
+        action = act.SplitVertical { domain = 'CurrentPaneDomain' }
+    },
+    {
+        mods   = "LEADER",
+        key    = "|",
+        action = act.SplitHorizontal { domain = 'CurrentPaneDomain' }
     },
 }
 
