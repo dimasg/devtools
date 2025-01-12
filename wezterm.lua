@@ -38,6 +38,27 @@ config.keys = {
         key    = "|",
         action = act.SplitHorizontal { domain = 'CurrentPaneDomain' }
     },
+    -- pane switch
+    {
+        mods   = "LEADER",
+        key = 'LeftArrow',
+        action = act.ActivatePaneDirection 'Left',
+    },
+    {
+        mods   = "LEADER",
+        key = 'RightArrow',
+        action = act.ActivatePaneDirection 'Right',
+    },
+    {
+        mods   = "LEADER",
+        key = 'UpArrow',
+        action = act.ActivatePaneDirection 'Up',
+    },
+    {
+        mods   = "LEADER",
+        key = 'DownArrow',
+        action = act.ActivatePaneDirection 'Down',
+    },
 }
 
 -- and finally, return the configuration to wezterm
