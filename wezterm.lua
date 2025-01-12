@@ -85,6 +85,17 @@ config.keys = {
         mods = 'LEADER',
         action = act.TogglePaneZoomState,
     },
+    -- next/previous tab
+    {
+        key = 'n',
+        mods = 'LEADER',
+        action = act.ActivateTabRelative(1),
+    },
+    {
+        key = 'p',
+        mods = 'LEADER',
+        action = act.ActivateTabRelative(-1),
+    },
 }
 
 -- and finally, return the configuration to wezterm
