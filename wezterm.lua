@@ -59,6 +59,32 @@ config.keys = {
         key = 'DownArrow',
         action = act.ActivatePaneDirection 'Down',
     },
+    -- pane resize
+    {
+        key = 'h',
+        mods = 'LEADER',
+        action = act.AdjustPaneSize { 'Left', 5 },
+    },
+    {
+        key = 'j',
+        mods = 'LEADER',
+        action = act.AdjustPaneSize { 'Down', 5 },
+    },
+    {
+        key = 'k',
+        mods = 'LEADER',
+        action = act.AdjustPaneSize { 'Up', 5 }
+    },
+    {
+        key = 'l',
+        mods = 'LEADER',
+        action = act.AdjustPaneSize { 'Right', 5 },
+    },
+    {
+        key = 'z',
+        mods = 'LEADER',
+        action = act.TogglePaneZoomState,
+    },
 }
 
 -- and finally, return the configuration to wezterm
