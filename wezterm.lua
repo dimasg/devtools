@@ -7,6 +7,8 @@ local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices
 
+config.default_prog = { '/usr/local/bin/fish' }
+
 config.color_scheme = 'Hipster Green'
 
 -- https://github.com/be5invis/Iosevka/
