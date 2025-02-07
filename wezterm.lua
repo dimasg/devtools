@@ -40,6 +40,14 @@ config.keys = {
         key    = "|",
         action = act.SplitHorizontal { domain = 'CurrentPaneDomain' }
     },
+    {
+        mods   = "LEADER",
+        key    = "+",
+        action = act.SplitPane {
+            direction = 'Right',
+            size = { Percent = 70 },
+        }
+    },
     -- pane switch
     {
         mods   = "LEADER",
