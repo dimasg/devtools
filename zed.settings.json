@@ -10,6 +10,23 @@
   "vim_mode": true,
   "ui_font_size": 16,
   "buffer_font_size": 16,
+  "terminal": {
+    "copy_on_select": true,
+    "detect_venv": {
+      "on": {
+        "directories": [".env", "env", ".venv", "venv"],
+        "activate_script": "default"
+      }
+    },
+    "line_height": "comfortable",
+    "toolbar": {
+      "breadcrumbs": true
+    },
+    "working_directory": "current_project_directory",
+    "shell": {
+      "program": "/usr/local/bin/fish"
+    }
+  },
   "theme": {
     "mode": "system",
     "light": "Solarized Light",
