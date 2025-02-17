@@ -11,9 +11,22 @@ config.default_prog = { '/usr/local/bin/fish' }
 
 config.color_scheme = 'Hipster Green'
 
--- https://github.com/be5invis/Iosevka/
-config.font = wezterm.font('Iosevka Term Curly', {weight = 'Medium'})
+config.line_height = 1.2
 config.font_size = 14
+-- weight:
+--   Thin, ExtraLight, Light, DemiLight, Book, Regular (default),
+--   Medium, DemiBold, Bold, ExtraBold, Black, ExtraBlack
+-- stretch:
+--   UltraCondensed, ExtraCondensed, Condensed, SemiCondensed, Normal (default),
+--   SemiExpanded, Expanded, ExtraExpanded, UltraExpanded
+--
+-- https://github.com/be5invis/Iosevka/
+-- https://github.com/evilmartians/mono/
+config.font = wezterm.font_with_fallback({
+    {family = 'Martian Mono', weight = 'Light', stretch = 'SemiCondensed'},
+    {family = 'Iosevka Term Curly', weight = 'Medium'},
+    {family = 'Fira Code', weight = 'Medium'},
+})
 
 config.initial_rows = 40
 config.initial_cols = 132
