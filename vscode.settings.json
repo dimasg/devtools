@@ -37,6 +37,29 @@
     },
       // terminal
     "terminal.integrated.rendererType": "dom",
+      // terminal macos
+    "terminal.integrated.defaultProfile.osx": "fish",
+    "terminal.integrated.profiles.osx": {
+        "bash": {
+            "path": "bash",
+            "args": [
+                "-l"
+            ],
+            "icon": "terminal-bash"
+        },
+        "zsh": {
+            "path": "zsh",
+            "args": [
+                "-l"
+            ]
+        },
+        "fish": {
+            "path": "/usr/local/bin/fish",
+            "args": [
+                "-l"
+            ]
+        }
+    },
       // window
     "window.zoomLevel": 1,
     "window.titleBarStyle": "custom",
