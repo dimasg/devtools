@@ -24,6 +24,7 @@
         "**/logs": true,
         "**/log": true
     },
+    "files.trimTrailingWhitespace": false,
     "files.watcherExclude": {
         "**/.git/objects/**": true,
         "**/.git/subtree-cache/**": true,
@@ -34,7 +35,6 @@
         "**/logs": true,
         "**/log": true
     },
-    "files.trimTrailingWhitespace": true,
       // terminal
     "terminal.integrated.rendererType": "dom",
       // window
