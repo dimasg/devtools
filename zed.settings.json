@@ -8,8 +8,11 @@
 // from the command palette or from `Zed` application menu.
 {
   "vim_mode": true,
-  "ui_font_size": 16,
-  "buffer_font_size": 16,
+  "ui_font_size": 15,
+  "buffer_font_size": 15,
+  "buffer_font_weight": 400,
+  "buffer_font_family": "Zed Plex Mono",
+  "buffer_font_fallbacks": ["Zed Plex Mono"],
   "restore_on_startup": "last_workspace",
   "terminal": {
     "copy_on_select": true,
@@ -32,5 +35,27 @@
     "mode": "system",
     "light": "Solarized Light",
     "dark": "One Dark"
+  },
+  "format_on_save": "off",
+  "languages": {
+    "CSS": {
+      "formatter": {
+        "code_actions": {
+          "source.fixAll.stylelint": false
+        }
+      }
+    },
+    "SCSS": {
+      "formatter": {
+        "code_actions": {
+          "source.fixAll.stylelint": false
+        }
+      }
+    }
+  },
+  "file_types": {
+    "CSS": ["scss"],
+    "JS": ["cshtml"],
+    "HTML": ["cshtml", "razor"]
   }
 }
