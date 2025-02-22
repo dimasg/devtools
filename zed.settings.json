@@ -59,6 +59,13 @@
       }
     }
   },
+  "lsp": {
+    "biome": {
+      "settings": {
+        "require_config_file": true
+      }
+    }
+  },
   "file_types": {
     "CSS": ["scss"],
     "JS": ["cshtml"],
