@@ -36,7 +36,10 @@
     "light": "Solarized Light",
     "dark": "One Dark"
   },
+  "autosave": "on_focus_change",
   "format_on_save": "off",
+  "tab_size": 4,
+  "hard_tabs": false,
   "languages": {
     "CSS": {
       "formatter": {
@@ -44,6 +47,9 @@
           "source.fixAll.stylelint": false
         }
       }
+    },
+    "JSON": {
+      "tab_size": 2
     },
     "SCSS": {
       "formatter": {
