@@ -69,6 +69,7 @@
   "file_types": {
     "CSS": ["scss"],
     "JS": ["cshtml"],
-    "HTML": ["cshtml", "razor"]
+    "HTML": ["cshtml", "razor"],
+    "XML": ["resx"]
   }
 }
