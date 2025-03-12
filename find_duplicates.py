@@ -6,6 +6,13 @@ import logging
 import os
 
 
+def get_md5(info):
+    """ return md5sum for file """
+
+    import hashlib;
+
+    return hashlib.md5(open(os.path.join(info['path'], info['name']), 'rb').read()).hexdigest();
+
 def find_duplicates(cmd_args):
     """ find duplicates """
     files_info = {}
@@ -68,20 +75,29 @@ def find_duplicates(cmd_args):
                 continue
             print(f'File {file_name} found in:'.format(file_name))
             for info in infos:
-                print(f"\tsize: {info['size']}, path: {info['path']}")
+                if cmd_args.show_md5:
+                    print(f"\tsize: {get_md5(info)}, {info['size']}, path: {info['path']}")
+                else:
+                    print(f"\tsize: {info['size']}, path: {info['path']}")
         elif cmd_args.size_only:
             if len(infos) < 2:
                 continue
             print(f'Files with size {file_name} found in:'.format(file_name))
             for info in infos:
-                print(f"\tsize: {info['size']}, path: {info['path']}, name: {info['name']}")
+                if cmd_args.show_md5:
+                    print(f"\tmd5: {get_md5(info)}, path: {info['path']}, name: {info['name']}")
+                else:
+                    print(f"\tpath: {info['path']}, name: {info['name']}")
         else:
             for file_size, size_infos in infos.items():
                 if len(size_infos) < 2:
                     continue
                 print(f'File {file_name} with size {file_size} found in:')
                 for info in size_infos:
-                    print(f"\tpath: {info['path']}")
+                    if cmd_args.show_md5:
+                        print(f"\tpath: {get_md5(info)}, {info['path']}")
+                    else:
+                        print(f"\tpath: {info['path']}")
 
 def main():
     """ main subroutine """
@@ -108,6 +124,11 @@ def main():
     )
     parser.add_argument(
         '--size-only', action='store',
+        nargs='?', const='1',
+        help='group only by size'
+    )
+    parser.add_argument(
+        '--show-md5', action='store',
         nargs='?', const='1',
         help='group only by size'
     )
