@@ -7,13 +7,25 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "vim_mode": true,
   "ui_font_size": 15,
   "buffer_font_size": 15,
   "buffer_font_weight": 400,
   "buffer_font_family": "Zed Plex Mono",
   "buffer_font_fallbacks": ["Zed Plex Mono"],
+  "file_types": {
+    "CSS": ["scss"],
+    "JS": ["cshtml"],
+    "HTML": ["cshtml", "razor"],
+    "XML": ["resx"]
+  },
   "restore_on_startup": "last_workspace",
+  "search": {
+    "include_ignored": false
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
   "terminal": {
     "copy_on_select": true,
     "detect_venv": {
@@ -23,13 +35,16 @@
       }
     },
     "line_height": "comfortable",
+    "scrollbar": {
+      "show": "auto"
+    },
+    "shell": {
+      "program": "/usr/local/bin/fish"
+    },
     "toolbar": {
       "breadcrumbs": true
     },
-    "working_directory": "current_project_directory",
-    "shell": {
-      "program": "/usr/local/bin/fish"
-    }
+    "working_directory": "current_project_directory"
   },
   "theme": {
     "mode": "system",
@@ -66,10 +81,44 @@
       }
     }
   },
-  "file_types": {
-    "CSS": ["scss"],
-    "JS": ["cshtml"],
-    "HTML": ["cshtml", "razor"],
-    "XML": ["resx"]
+  "vim_mode": true,
+  "relative_line_numbers": false,
+  "vim": {
+    "normal_keyboard_layout": "com.apple.keylayout.US",
+    "use_multiline_find": true,
+    "use_smartcase_find": true
+  },
+  "file_scan_inclusions": [".env*"],
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/*.exe",
+    "**/.svn",
+    "**/.hg",
+    "**/.jj",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/add-ons",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings",
+    "**/*.gitignore",
+    "**/desktop.ini",
+    "**/*.nims",
+    "**/*.sum",
+    "**/*.code-workspace",
+    "**/*.sqlite",
+    ".vscode"
+  ],
+  "auto_install_extensions": {
+    "nim": false,
+    "csharp": false,
+    "vscode-great-icons": false,
+    "ultimate-dark-neo": false,
+    "material-dark": false,
+    "catppuccin-blur": false,
+    "rainbow-csv": false,
+    "log": false,
+    "html": true
   }
 }
+// vim: ts=2 sw=2
