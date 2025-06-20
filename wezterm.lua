@@ -33,7 +33,7 @@ config.initial_cols = 132
 
 config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
 
-config.selection_word_boundary = ' \t\n{}"\'`';
+config.selection_word_boundary = ' \t\n{}[]()"\'`;,‘’';
 
 config.keys = {
     -- show the pane selection mode, but have it swap the active and selected panes
