@@ -40,6 +40,7 @@
     },
       // git
     "git.enabled": true,
+    "git.path": "${env:BIN_PATH}/git",
       // outline
     "outline.showVariables": false,
       // powershell
@@ -108,8 +109,14 @@
     }],
     "vim.autoSwitchInputMethod.enable": true,
     "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
-    "vim.autoSwitchInputMethod.obtainIMCmd": "/usr/local/bin/im-select",
-    "vim.autoSwitchInputMethod.switchIMCmd": "/usr/local/bin/im-select {im}",
+    "vim.autoSwitchInputMethod.obtainIMCmd": "${env:BIN_PATH}/im-select",
+    "vim.autoSwitchInputMethod.switchIMCmd": "${env:BIN_PATH}/im-select {im}",
+      // biome
+    "biome.lsp.bin": "${env:BIN_PATH}/biome",
+      // dotnet
+    "dotnetAcquisitionExtension.existingDotnetPath": [
+        {"extensionId": "msazurermtools.azurerm-vscode-tools", "path": "${env:DOTNET_PATH}/dotnet"}
+    ],
       // eslint
     "eslint.codeActionsOnSave.rules": null,
     "eslint.validate": [
@@ -119,6 +126,8 @@
     ],
       // gitlens
     "gitlens.advanced.telemetry.enabled": false,
+      // sonarlint
+    "sonarlint.pathToNodeExecutable": "${env:BIN_PATH}/node",
       // tslint
     "tslint.jsEnable": true,
       // vtools
