@@ -6,9 +6,12 @@
     "editor.fontWeight": "400",
     "editor.fontLigatures": true,
     "editor.insertSpaces": auto,
+    "editor.suggestSelection": "first",
     "editor.tabSize": 0,
     "editor.folding": true,
     "editor.minimap.enabled": false,
+      // extensions
+    "extensions.autoUpdate": false,
       // files
     "files.autoSave": "onFocusChange",
     "files.exclude": {
@@ -35,8 +38,22 @@
         "**/logs": true,
         "**/log": true
     },
+      // git
+    "git.enabled": true,
+      // outline
+    "outline.showVariables": false,
+      // powershell
+    "powershell.startAutomatically": false,
+    "powershell.integratedConsole.showOnStartup": false,
+      // telemetry
+    // obsolete "telemetry.enableCrashReporter": false,
+    // obsolete "telemetry.enableTelemetry": false,
+    "telemetry.telemetryLevel": "off",
+    "rest-client.enableTelemetry": false,
       // terminal
     "terminal.integrated.rendererType": "dom",
+      // terminal windows
+    "terminal.integrated.shellArgs.windows": ["-NoStartupWindow"],
       // terminal macos
     "terminal.integrated.defaultProfile.osx": "fish",
     "terminal.integrated.profiles.osx": {
@@ -63,9 +80,10 @@
       // window
     "window.zoomLevel": 1,
     "window.titleBarStyle": "custom",
-    "workbench.statusBar.visible": true,
       // workbench
     "workbench.activityBar.visible": true,
+    "workbench.secondarySideBar.defaultVisibility": "visible",
+    "workbench.statusBar.visible": true,
     "workbench.colorTheme": "Monokai",
     "workbench.iconTheme": "vscode-icons",
       // vim
@@ -92,31 +110,27 @@
     "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
     "vim.autoSwitchInputMethod.obtainIMCmd": "/usr/local/bin/im-select",
     "vim.autoSwitchInputMethod.switchIMCmd": "/usr/local/bin/im-select {im}",
-      // telemetry
-    "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false,
-    "rest-client.enableTelemetry": false,
-      // tslint
-    "tslint.jsEnable": true,
+      // eslint
+    "eslint.codeActionsOnSave.rules": null,
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "svelte"
+    ],
       // gitlens
     "gitlens.advanced.telemetry.enabled": false,
+      // tslint
+    "tslint.jsEnable": true,
       // vtools
     "vtools.autoHideSideBar": true,
     "vtools.autoHideBottomBar": true,
-    "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "extensions.autoUpdate": false,
     "svelte.enable-ts-plugin": true,
     "stylelint.validate": [
       "css",
       "less",
       "postcss",
       "svelte"
-    ],
-    "eslint.validate": [
-        "javascript",
-        "javascriptreact",
-        "svelte"
     ],
     "[html]": {
         "editor.defaultFormatter": "vscode.html-language-features"
