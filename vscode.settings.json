@@ -98,15 +98,32 @@
     "vim.useSystemClipboard": true,
     "vim.visualstar": true,
     "vim.normalModeKeyBindingsNonRecursive": [
-    {
-        "before": ["<leader>", "d"],
-        "after": [],
+      {
+        "before": [
+          "Z"
+        ],
         "commands": [
-            {
-                "command": "gitlens.diffWithPrevious"
-            }
+          ":tabp"
         ]
-    }],
+      },
+      {
+        "before": [
+          "X"
+        ],
+        "commands": [
+          ":tabn"
+        ]
+      },
+      {
+          "before": ["<leader>", "d"],
+          "after": [],
+          "commands": [
+              {
+                  "command": "gitlens.diffWithPrevious"
+              }
+          ]
+      }
+    ],
     "vim.autoSwitchInputMethod.enable": true,
     "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
     "vim.autoSwitchInputMethod.obtainIMCmd": "${env:BIN_PATH}/im-select",
