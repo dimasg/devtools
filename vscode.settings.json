@@ -7,9 +7,9 @@
     //"editor.fontWeight": "normal"
     "editor.fontWeight": "400",
     "editor.fontLigatures": true,
-    "editor.insertSpaces": auto,
+    "editor.insertSpaces": true,
     "editor.suggestSelection": "first",
-    "editor.tabSize": 0,
+    "editor.tabSize": 4,
     "editor.folding": true,
     "editor.minimap.enabled": false,
       // extensions
