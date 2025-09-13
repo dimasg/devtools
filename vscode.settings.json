@@ -1,4 +1,6 @@
 {
+      // application
+    "application.shellEnvironmentResolutionTimeout": 15,
       // editor
     "editor.fontSize": 12,
     "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
