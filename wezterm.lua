@@ -110,6 +110,12 @@ config.keys = {
         mods = 'LEADER',
         action = act.TogglePaneZoomState,
     },
+    -- copy mode
+    {
+        key = '[',
+        mods = 'LEADER',
+        action = act.ActivateCopyMode,
+    },
     -- next/previous tab
     {
         key = 'n',
@@ -120,6 +126,18 @@ config.keys = {
         key = 'p',
         mods = 'LEADER',
         action = act.ActivateTabRelative(-1),
+    },
+    -- disable ctrl-w
+    {
+      key = 'w',
+      mods = 'CTRL',
+      action = wezterm.action.DisableDefaultAssignment,
+    },
+    -- disable ctrl-w
+    {
+      key = 'w',
+      mods = 'SUPER',
+      action = wezterm.action.DisableDefaultAssignment,
     },
 }
 
