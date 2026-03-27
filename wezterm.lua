@@ -44,6 +44,18 @@ config.keys = {
             mode = 'SwapWithActive',
         },
     },
+    -- move tab left
+    {
+        mods   = "LEADER",
+        key    = 'q',
+        action = act.MoveTabRelative(-1)
+    },
+    -- move tab right
+    {
+        mods   = "LEADER",
+        key    = 'w',
+        action = act.MoveTabRelative(1)
+    },
     -- splitting
     {
         mods   = "LEADER",
