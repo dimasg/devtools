@@ -33,6 +33,9 @@ config.initial_cols = 132
 
 config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
 
+config.use_ime = true -- for non-english layouts
+config.macos_forward_to_ime_modifier_mask = "CTRL"
+
 config.selection_word_boundary = ' \t\n{}[]()"\'`;,‘’';
 
 config.keys = {
