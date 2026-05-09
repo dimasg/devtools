@@ -147,6 +147,7 @@
     "gitlens.advanced.telemetry.enabled": false,
       // sonarlint
     "sonarlint.pathToNodeExecutable": "${env:BIN_PATH}/node",
+    "sonarlint.disableTelemetry": true,
       // tslint
     "tslint.jsEnable": true,
       // vtools
